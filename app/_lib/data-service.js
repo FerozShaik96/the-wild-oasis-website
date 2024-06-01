@@ -16,3 +16,16 @@ export const getCabins = async function () {
 
   return data;
 };
+export async function getCabin(id) {
+  const { data, error } = await supabase
+    .from("cabins")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+  }
+
+  return data;
+}
